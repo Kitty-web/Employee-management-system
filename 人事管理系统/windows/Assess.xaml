@@ -1,0 +1,66 @@
+﻿<Page x:Class="人事管理系统.windows.Assess"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="580" d:DesignWidth="998"
+	Title="Assess">
+
+    <Page.Resources>
+        <Style x:Key="btnStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="0" CornerRadius="3,3,3,3" Name="PART_Background">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFC8D7E6"  Offset="0.0" />
+                                    <GradientStop Color="#FF79ACCF" Offset="0.7" />
+                                    <GradientStop Color="#FFBBD3EA"  Offset="1.0" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Image Name="photo" Margin="93,94,737,270" />
+
+        <GroupBox Header="考核信息" HorizontalAlignment="Left" Margin="32,40,0,0" VerticalAlignment="Top" Height="324" Width="923">
+        </GroupBox>
+        <DataGrid Name="dataGrid_assess" HorizontalAlignment="Left" Margin="32,426,0,0" VerticalAlignment="Top" Height="119" Width="923"/>
+        <Button Name="btnAssess" Content="结算" HorizontalAlignment="Left" Margin="303,387,0,0" VerticalAlignment="Top" Width="72" Style="{StaticResource btnStyle}" Height="20" BorderBrush="{x:Null}" Click="btnAssess_Click"/>
+        <Button Name="btnAdd" Content="考核" HorizontalAlignment="Left" Margin="451,387,0,0" VerticalAlignment="Top" Width="75" Style="{StaticResource btnStyle}" Height="20" Click="btnAdd_Click"/>
+        <Button Name="btnModify" Content="修改" HorizontalAlignment="Left" Margin="595,387,0,0" VerticalAlignment="Top" Width="75" Style="{StaticResource btnStyle}" Height="20" Click="btnModify_Click"/>
+        <Button Name="btnSelect" Content="查询" HorizontalAlignment="Left" Margin="746,387,0,0" VerticalAlignment="Top" Width="75" Style="{StaticResource btnStyle}" Height="20" Click="btnSelect_Click"/>
+        <Label x:Name="label1" Content="员工姓名：" HorizontalAlignment="Left" Margin="317,186,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="员工编号：" HorizontalAlignment="Left" Margin="317,143,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label4" Content="缺勤次数：" HorizontalAlignment="Left" Margin="647,102,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label6" Content="请假天数：" HorizontalAlignment="Left" Margin="647,145,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label7" Content="业务考核：" HorizontalAlignment="Left" Margin="647,191,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label8" Content="考核日期：" HorizontalAlignment="Left" Margin="647,232,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label9" Content="所属部门：" HorizontalAlignment="Left" Margin="317,232,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_queqin" HorizontalAlignment="Left" Margin="767,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="textBox_sno" HorizontalAlignment="Left" Margin="417,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="textBox_name" HorizontalAlignment="Left" Height="19" Margin="417,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="textBox_askLeave" HorizontalAlignment="Left" Margin="767,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <ComboBox Name="combo_dept" HorizontalAlignment="Left" Margin="417,236,0,0" VerticalAlignment="Top" Width="112"/>
+        <Button Name="btnSelectImg" Content="选择" HorizontalAlignment="Left" Margin="146,330,0,0" VerticalAlignment="Top" Width="60" Height="20" Background="{x:Null}"
+                Click="btnSelectImg_Click" Style="{StaticResource btnStyle}"/>
+        <Label x:Name="label2_Copy" Content="考核编号：" HorizontalAlignment="Left" Margin="317,99,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock_ID" HorizontalAlignment="Left" Margin="417,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <Label x:Name="label1_Copy" Content="迟到次数：" HorizontalAlignment="Left" Margin="317,270,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_lateCount" HorizontalAlignment="Left" Height="19" Margin="417,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <Label x:Name="label1_Copy1" Content="考核结果：" HorizontalAlignment="Left" Margin="647,270,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="combo_yewu" HorizontalAlignment="Left" Margin="767,195,0,0" VerticalAlignment="Top" Width="112"/>
+        <ComboBox Name="combo_result" HorizontalAlignment="Left" Margin="767,274,0,0" VerticalAlignment="Top" Width="112"/>
+        <DatePicker Name="datePicker_date" HorizontalAlignment="Left" Margin="767,233,0,0" VerticalAlignment="Top" Width="112"/>
+        <Button x:Name="btnClear" Content="清空" HorizontalAlignment="Left" Margin="157,387,0,0" VerticalAlignment="Top" Width="72" Style="{StaticResource btnStyle}" Height="20" BorderBrush="{x:Null}" Click="btnClear_Click"/>
+
+    </Grid>
+</Page>

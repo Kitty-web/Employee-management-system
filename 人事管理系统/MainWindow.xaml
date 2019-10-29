@@ -1,0 +1,36 @@
+﻿<Window x:Class="人事管理系统.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="452" Width="736"
+        WindowStyle="None">
+    <Grid Margin="0,0,-8,-2">
+        <Image HorizontalAlignment="Left" Height="448" VerticalAlignment="Top" Width="762" Source="D:\文档\软工应用与实践\图片\登录.psd" Margin="0,0,-26,-2"/>
+        <Label Content="管理员登录" HorizontalAlignment="Left" Margin="485,114,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei" FontSize="14" FontWeight="Bold" Foreground="#FF0F1474"/>
+        <Label Content="用户名" HorizontalAlignment="Left" Margin="496,168,0,0" VerticalAlignment="Top" Width="51"/>
+        <Label Content="密码" HorizontalAlignment="Left" Margin="496,210,0,0" VerticalAlignment="Top"/>
+        <Label Content="人事管理系统" HorizontalAlignment="Left" Margin="186,39,0,0" VerticalAlignment="Top" Height="44" Width="207" Foreground="#FF0C1844" FontSize="24"/>
+        <Label Content="Personnel management system" HorizontalAlignment="Left" Margin="161,74,0,0" VerticalAlignment="Top" Width="239" FontSize="14" Foreground="#FF0D1E5B"/>
+        <TextBox Name="log_user" HorizontalAlignment="Left" Height="17" Margin="499,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113" BorderBrush="{x:Null}"/>
+        <TextBox Name="log_password" HorizontalAlignment="Left" Height="17" Margin="499,233,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113" BorderBrush="{x:Null}"/>
+        <Button Content="登录" HorizontalAlignment="Left" Margin="569,270,0,0" VerticalAlignment="Top" Width="54" Height="20"
+                Foreground="#FFEEDADA">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="0" CornerRadius="2,2,2,2" Name="PART_Background">
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FF2466A8" Offset="0.0" />
+                                <GradientStop Color="#FF133966" Offset="0.5" />
+                                <GradientStop Color="#FF2466A8" Offset="0.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Content="—" HorizontalAlignment="Left" Margin="667,-1,0,0" VerticalAlignment="Top" Width="28" Height="18"/>
+        <Button Content="X" HorizontalAlignment="Left" Margin="695,-1,0,0" VerticalAlignment="Top" Width="28" Height="18"
+                Click="btnExit_Click"/>
+    </Grid>
+</Window>

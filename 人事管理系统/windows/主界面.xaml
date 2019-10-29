@@ -1,0 +1,163 @@
+﻿<Window x:Class="人事管理系统.windows.主界面"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="主界面" Height="700" Width="1187"
+        WindowStyle="None">
+    <Window.Resources>
+        <Style x:Key="DefaultTreeView" TargetType="{x:Type TreeView}">
+            <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+            <Setter Property="VirtualizingStackPanel.IsVirtualizing" Value="True"></Setter>
+            <Setter Property="VirtualizingStackPanel.VirtualizationMode" Value="Recycling" />
+            <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel IsItemsHost="True" IsVirtualizing="True" VirtualizationMode="Recycling" Margin="0"/>
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="treeItemStyle" TargetType="TreeViewItem">
+            <Style.Resources>
+                <LinearGradientBrush x:Key="ItemAreaBrush" EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFC8D7E6"  Offset="0.0" />
+                    <GradientStop Color="#FF79ACCF" Offset="0.7" />
+                    <GradientStop Color="#FFBBD3EA"  Offset="1.0" />
+                </LinearGradientBrush>
+                <LinearGradientBrush x:Key="SelectedItemAreaBrush" StartPoint="0.5, 0" EndPoint="0.5, 1">
+                    <GradientStop Color="#FFE8E2D8" Offset="0" />
+                    <GradientStop Color="#FF9B9491" Offset="1" />
+                </LinearGradientBrush>
+                <LinearGradientBrush x:Key="ItemBorderBrush" StartPoint="0.5, 0" EndPoint="0.5, 1">
+                    <GradientStop Color="#FFA2CAF1" Offset="0" />
+                    <GradientStop Color="#FF70A6E8" Offset="1" />
+                </LinearGradientBrush>
+                <LinearGradientBrush x:Key="SelectedItemBorderBrush" StartPoint="0.5, 0" EndPoint="0.5, 1">
+                    <GradientStop Color="#FFC5C59B" Offset="0" />
+                    <GradientStop Color="#FF9C9898" Offset="1" />
+                </LinearGradientBrush>
+                <DropShadowBitmapEffect x:Key="DropShadowEffect" />
+            </Style.Resources>
+            <Setter Property="Cursor" Value ="Hand"/>
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" IsItemsHost="True" Margin="10,2" Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate x:Name="Parent" TargetType="TreeViewItem">
+                        <Grid Margin="2" Width="1500">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" Name="Bd" Background="{StaticResource ItemAreaBrush}" BorderBrush="{StaticResource ItemBorderBrush}" BorderThickness="0.6" CornerRadius="4,4,4,4" Padding="6" Tag="{Binding ElementName=PART_Header}">
+                                <ContentPresenter Name="PART_Header" ContentSource="Header" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0" />
+                            </Border>
+                            <Label x:Name="BtnArrow" Width="25" Height="15" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Style="{DynamicResource PresetDownArrowStyle}" Tag="{Binding ElementName=PART_Header}" IsEnabled="False"></Label>
+                            <ItemsPresenter x:Name="GridChild" Grid.Row="1"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Bd" Property="Panel.Background" Value="{StaticResource SelectedItemAreaBrush}" />
+                                <Setter TargetName="Bd" Property="Border.BorderBrush" Value="{StaticResource SelectedItemBorderBrush}" />
+                                <Setter TargetName="Bd" Property="Border.BitmapEffect" Value="{StaticResource DropShadowEffect}" />
+                                <Setter Property="IsExpanded"  Value="True"/>
+
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter Property="IsExpanded"  Value="False"/>
+                            </Trigger>
+                            <Trigger Property="HasItems"  Value="false">
+                                <Setter TargetName="BtnArrow"  Property="Visibility"  Value="Hidden"/>
+                            </Trigger>
+                            <Trigger Property="HasItems"  Value="true">
+                                <Setter TargetName="BtnArrow"  Property="Visibility"  Value="Visible"/>
+                            </Trigger>
+
+                            <Trigger Property="IsExpanded" Value="false">
+                                <Setter TargetName="GridChild"  Property="Visibility"  Value="Collapsed"/>
+                            </Trigger>
+                            <Trigger Property="IsExpanded" Value="True">
+                                <Setter TargetName="GridChild"  Property="Visibility"  Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Image HorizontalAlignment="Left" Height="679" VerticalAlignment="Top" Width="1182" Source="D:\文档\软工应用与实践\图片\主界面.psd" Stretch="Fill" Margin="0,0,0,-10"/>
+        <TreeView Name="asd" Margin="5,101,1002,0" Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource DefaultTreeView}">
+            <TreeViewItem Header="员工信息管理" Style="{StaticResource treeItemStyle}" Width="177">
+                <TreeViewItem Header="添加员工信息" Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="addEmp_Click" Width="1488"/>
+                <TreeViewItem Header="修改员工信息" Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Width="1486" Selected="addEmp_Click"/>
+                <TreeViewItem Header="删除员工信息" Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="addEmp_Click"/>
+                <TreeViewItem Header="查找员工信息" Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="addEmp_Click"/>
+            </TreeViewItem>
+            <TreeViewItem Header="部门信息管理" Style="{StaticResource treeItemStyle}" Width="177">
+                <TreeViewItem Header="添加部门信息" Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="addDept_Click"/>
+                <TreeViewItem Header="修改部门信息" Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="addDept_Click"/>
+                <TreeViewItem Header="删除部门信息" Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="addDept_Click"/>
+                <TreeViewItem Header="查找部门信息" Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="addDept_Click"/>
+            </TreeViewItem>
+            <TreeViewItem Header="考勤信息管理" Style="{StaticResource treeItemStyle}" Width="177">
+                <TreeViewItem Header="登记考勤信息"  Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="checkOn_Click"/>
+                <TreeViewItem Header="修改考勤信息"  Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="checkOn_Click"/>
+                <TreeViewItem Header="查找考勤信息"  Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="checkOn_Click"/>
+            </TreeViewItem>
+            <TreeViewItem Header="请假销假管理" Style="{StaticResource treeItemStyle}" Width="177">
+                <TreeViewItem Header="登记请假信息" Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="askLeave_Click"/>
+                <TreeViewItem Header="登记销假信息" Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="askLeave_Click"/>
+                <TreeViewItem Header="查询请假信息" Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="askLeave_Click"/>
+            </TreeViewItem>
+            <TreeViewItem Header="奖惩信息管理" Style="{StaticResource treeItemStyle}" Width="177">
+                <TreeViewItem Header="登记奖惩信息" Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="rewardOrPunish_Click"/>
+                <TreeViewItem Header="查询奖惩信息" Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="rewardOrPunish_Click"/>
+            </TreeViewItem>
+            <TreeViewItem Header="工资信息管理" Style="{StaticResource treeItemStyle}" Width="177">
+                <TreeViewItem Header="修改工资信息" Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="salary_Click"/>
+                <TreeViewItem Header="结算工资信息" Margin="0,10,52,0" Style="{StaticResource treeItemStyle}" Selected="salary_Click"/>
+                <TreeViewItem Header="查询工资信息" Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="salary_Click"/>
+            </TreeViewItem>
+            <TreeViewItem Header="出差信息管理" Style="{StaticResource treeItemStyle}" Width="177">
+                <TreeViewItem Header="添加出差信息" Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="workOutside_Click"/>
+                <TreeViewItem Header="查询出差信息" Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="workOutside_Click"/>
+            </TreeViewItem>
+            <TreeViewItem Header="考核信息管理" Style="{StaticResource treeItemStyle}" Width="177">
+                <TreeViewItem Header="记录考核信息" Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="assess_Click"/>
+                <TreeViewItem Header="查询考核信息" Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="assess_Click"/>
+            </TreeViewItem>
+            <TreeViewItem Header="人事调动管理" Style="{StaticResource treeItemStyle}" Width="177">
+                <TreeViewItem Header="登记调动信息" Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="personnelTransfer_Click"/>
+                <TreeViewItem Header="查询调动信息" Margin="0,10,0,0" Style="{StaticResource treeItemStyle}" Selected="personnelTransfer_Click"/>
+            </TreeViewItem>
+        </TreeView>
+        <Label Content="人事管理系统" HorizontalAlignment="Left" Margin="34,-4,0,0" VerticalAlignment="Top" Height="29" Width="174" FontSize="14" FontWeight="Bold" Foreground="#FF152363"/>
+        <Menu HorizontalAlignment="Left" Height="19" Margin="23,41,0,0" VerticalAlignment="Top" Width="445" Background="{x:Null}">
+            <MenuItem Header="登录" Foreground="#FFF7EDED">
+                <MenuItem Header="用户登录" Foreground="#FF191616"/>
+                <MenuItem Header="管理员登录" Foreground="#FF1D1B1B"/>
+            </MenuItem>
+            <MenuItem Header="系统设置" Foreground="#FFF7EDED" Margin="10,0,0,0"/>
+            <MenuItem Header="操作助手" Foreground="#FFF7EDED" Margin="10,0,0,0"/>
+            <MenuItem Header="界面风格" Foreground="#FFF7EDED" Margin="10,0,0,0"/>
+            <MenuItem Header="帮助" Foreground="#FFF7EDED" Margin="10,0,0,0"/>
+        </Menu>
+        <Button Name="btnExit" Content="Button" HorizontalAlignment="Left" Margin="335,65,0,0" VerticalAlignment="Top" Width="47" Background="{x:Null}" Foreground="{x:Null}" BorderBrush="{x:Null}"
+                Click="btnExit_Click"/>
+        <Button Name="btnExit2" Content="Button" HorizontalAlignment="Left" Margin="1154,1,0,0" VerticalAlignment="Top" Width="28" Height="31" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}"
+                Click="btnExit2_Click"/>
+        <Frame Name="mainFrame" HorizontalAlignment="Left" Height="580" Margin="220,89,0,0" VerticalAlignment="Top" Width="962"/>
+        <!--<Image Source="D:\文档\软工应用与实践\图片\p1.psd" HorizontalAlignment="Left" Height="580" Margin="184,89,0,0" VerticalAlignment="Top" Width="998" Stretch="Fill"/>-->
+
+    </Grid>
+</Window>

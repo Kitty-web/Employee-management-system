@@ -1,0 +1,63 @@
+﻿<Page x:Class="人事管理系统.windows.CheckOn"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="580" d:DesignWidth="998"
+	Title="CheckOn">
+
+    <Page.Resources>
+        <Style x:Key="btnStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="0" CornerRadius="3,3,3,3" Name="PART_Background">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFC8D7E6"  Offset="0.0" />
+                                    <GradientStop Color="#FF79ACCF" Offset="0.7" />
+                                    <GradientStop Color="#FFBBD3EA"  Offset="1.0" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Image Name="photo" Margin="93,94,737,270" Stretch="Fill"/>
+
+        <GroupBox Header="考勤信息" HorizontalAlignment="Left" Margin="32,40,0,0" VerticalAlignment="Top" Height="324" Width="923">
+        </GroupBox>
+        <DataGrid Name="dataGrid_checkOn" HorizontalAlignment="Left" Margin="32,426,0,0" VerticalAlignment="Top" Height="119" Width="923"/>
+        <Button Name="btnClear" Content="清空" HorizontalAlignment="Left" Margin="172,384,0,0" VerticalAlignment="Top" Width="72" Style="{StaticResource btnStyle}" Height="20" BorderBrush="{x:Null}" Click="btnClear_Click"/>
+        <Button Name="btnAdd" Content="添加" HorizontalAlignment="Left" Margin="320,384,0,0" VerticalAlignment="Top" Width="75" Style="{StaticResource btnStyle}" Height="20" Click="btnAdd_Click"/>
+        <Button Name="btnModify" Content="修改" HorizontalAlignment="Left" Margin="464,384,0,0" VerticalAlignment="Top" Width="75" Style="{StaticResource btnStyle}" Height="20"/>
+        <Button Name="btnFinal" Content="结算" HorizontalAlignment="Left" Margin="609,384,0,0" VerticalAlignment="Top" Width="75" Style="{StaticResource btnStyle}" Height="20" Click="btnFinal_Click"/>
+        <Label x:Name="label1" Content="员工姓名：" HorizontalAlignment="Left" Margin="333,267,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="员工编号：" HorizontalAlignment="Left" Margin="333,218,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label3" Content="考勤编号：" HorizontalAlignment="Left" Margin="333,118,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.643,-1.18"/>
+        <Label x:Name="label4" Content="考勤日期：" HorizontalAlignment="Left" Margin="333,167,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label5" Content="上 \ 下午：" HorizontalAlignment="Left" Margin="680,167,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.51,-0.114"/>
+        <Label x:Name="label6" Content="签到时间：" HorizontalAlignment="Left" Margin="680,218,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label7" Content="考勤类型：" HorizontalAlignment="Left" Margin="680,267,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label9" Content="所属部门：" HorizontalAlignment="Left" Margin="680,118,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock_CheckID" HorizontalAlignment="Left" Margin="433,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="textBox_sno" HorizontalAlignment="Left" Margin="433,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="textBox_name" HorizontalAlignment="Left" Height="19" Margin="433,271,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <ComboBox x:Name="combo_dept" HorizontalAlignment="Left" Height="19" Margin="774,120,0,0" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="textBox_time" HorizontalAlignment="Left" Margin="774,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <DatePicker Name="datePicker_checkOn" HorizontalAlignment="Left" Margin="433,168,0,0" VerticalAlignment="Top" Width="112"/>
+        <ComboBox Name="combo_checkOnType" HorizontalAlignment="Left" Margin="774,271,0,0" VerticalAlignment="Top" Width="112">
+        </ComboBox>
+        <ComboBox Name="combo_onOroFF" HorizontalAlignment="Left" Margin="774,167,0,0" VerticalAlignment="Top" Width="112"/>
+        <Button Name="btnSelectImg" Content="选择" HorizontalAlignment="Left" Margin="146,330,0,0" VerticalAlignment="Top" Width="60" Height="20" Background="{x:Null}"
+                Click="btnSelectImg_Click" Style="{StaticResource btnStyle}"/>
+        <Button x:Name="btnSelect" Content="查询" HorizontalAlignment="Left" Margin="756,384,0,0" VerticalAlignment="Top" Width="75" Style="{StaticResource btnStyle}" Height="20" Click="btnSelect_Click"/>
+
+    </Grid>
+</Page>

@@ -1,0 +1,65 @@
+﻿<Page x:Class="人事管理系统.windows.RewardOrPunish"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="580" d:DesignWidth="998"
+	Title="RewardOrPunish">
+
+    <Page.Resources>
+        <Style x:Key="btnStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="0" CornerRadius="3,3,3,3" Name="PART_Background">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFC8D7E6"  Offset="0.0" />
+                                    <GradientStop Color="#FF79ACCF" Offset="0.7" />
+                                    <GradientStop Color="#FFBBD3EA"  Offset="1.0" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Image Name="photo" Margin="93,94,737,270"/>
+
+        <GroupBox Header="奖惩信息" HorizontalAlignment="Left" Margin="32,50,0,0" VerticalAlignment="Top" Height="324" Width="923">
+        </GroupBox>
+        <DataGrid Name="dataGrid_reward" HorizontalAlignment="Left" Margin="32,426,0,0" VerticalAlignment="Top" Height="127" Width="923"/>
+        <Button Name="btnClear" Content="清空" HorizontalAlignment="Left" Margin="236,389,0,0" VerticalAlignment="Top" Width="72" Style="{StaticResource btnStyle}" Height="20" BorderBrush="{x:Null}" Click="btnClear_Cliak"/>
+        <Button Name="btnAdd" Content="添加" HorizontalAlignment="Left" Margin="384,389,0,0" VerticalAlignment="Top" Width="75" Style="{StaticResource btnStyle}" Height="20" Click="btnAdd_Click"/>
+        <Button Name="btnModify" Content="修改" HorizontalAlignment="Left" Margin="528,389,0,0" VerticalAlignment="Top" Width="75" Style="{StaticResource btnStyle}" Height="20"/>
+        <Button Name="btnSelect" Content="查询" HorizontalAlignment="Left" Margin="680,389,0,0" VerticalAlignment="Top" Width="75" Style="{StaticResource btnStyle}" Height="20" Click="btnSelect_Click"/>
+        <Label x:Name="label1" Content="员工姓名：" HorizontalAlignment="Left" Margin="333,192,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="员工编号：" HorizontalAlignment="Left" Margin="333,160,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label3" Content="记录编号：" HorizontalAlignment="Left" Margin="333,94,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.643,-1.18"/>
+        <Label x:Name="label4" Content="奖惩日期：" HorizontalAlignment="Left" Margin="333,128,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label5" Content="奖      金：" HorizontalAlignment="Left" Margin="677,161,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.51,-0.114"/>
+        <Label x:Name="label6" Content="扣      除：" HorizontalAlignment="Left" Margin="677,193,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label7" Content="奖惩类型：" HorizontalAlignment="Left" Margin="677,128,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label9" Content="所属部门：" HorizontalAlignment="Left" Margin="677,94,0,0" VerticalAlignment="Top"/>
+        <Label Content="奖惩原因：" HorizontalAlignment="Left" Margin="333,222,0,0" VerticalAlignment="Top" Height="27" Width="63"/>
+
+        <TextBlock x:Name="textBlock_ID" HorizontalAlignment="Left" Margin="433,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="textBox_sno" HorizontalAlignment="Left" Margin="433,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="textBox_name" HorizontalAlignment="Left" Height="19" Margin="433,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <ComboBox x:Name="combo_dept" HorizontalAlignment="Left" Height="19" Margin="774,100,0,0" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="textBox_rewardMoney" HorizontalAlignment="Left" Margin="774,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="textBox_punishMoney" HorizontalAlignment="Left" Margin="774,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+
+        <DatePicker Name="datePicker_reward" HorizontalAlignment="Left" Margin="433,129,0,0" VerticalAlignment="Top" Width="112"/>
+        <TextBox Name="textBox_reason" HorizontalAlignment="Left" Height="114" Margin="433,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="453"/>
+        <ComboBox Name="combo_rewardType" HorizontalAlignment="Left" Margin="774,132,0,0" VerticalAlignment="Top" Width="112">
+        </ComboBox>
+        <Button Name="btnSelectImg" Content="选择" HorizontalAlignment="Left" Margin="146,330,0,0" VerticalAlignment="Top" Width="60" Height="20" Background="{x:Null}"
+                Click="btnSelectImg_Click" Style="{StaticResource btnStyle}"/>
+    </Grid>
+</Page>

@@ -1,0 +1,75 @@
+﻿<Page x:Class="人事管理系统.windows.AddStaff"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="580" d:DesignWidth="998"
+	Title="AddStaff">
+
+    <Page.Resources>
+        <Style x:Key="btnStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="0" CornerRadius="3,3,3,3" Name="PART_Background">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFC8D7E6"  Offset="0.0" />
+                                    <GradientStop Color="#FF79ACCF" Offset="0.7" />
+                                    <GradientStop Color="#FFBBD3EA"  Offset="1.0" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Image Name="photo" Margin="93,94,737,270" Stretch="Fill"/>
+
+        <GroupBox Header="员工信息" HorizontalAlignment="Left" Margin="32,40,0,0" VerticalAlignment="Top" Height="324" Width="923">
+        </GroupBox>
+        <DataGrid Name="dataGrid_Staff" HorizontalAlignment="Left" Margin="32,426,0,0" VerticalAlignment="Top" Height="119" Width="923" RowStyle="{StaticResource RowStyle1}"/>
+        <Button Name="btnClear" Content="清空" HorizontalAlignment="Left" Margin="154,382,0,0" VerticalAlignment="Top" Width="72" Style="{StaticResource btnStyle}" Height="20" BorderBrush="{x:Null}" Click="btnClear_Click"/>
+        <Button Name="btnAdd" Content="添加" HorizontalAlignment="Left" Margin="302,382,0,0" VerticalAlignment="Top" Width="75" Style="{StaticResource btnStyle}" Height="20" Click="btnAdd_Click"/>
+        <Button Name="btnModify" Content="修改" HorizontalAlignment="Left" Margin="446,382,0,0" VerticalAlignment="Top" Width="75" Style="{StaticResource btnStyle}" Height="20" Click="btnModify_Click"/>
+        <Button Name="btnDelete" Content="删除" HorizontalAlignment="Left" Margin="594,382,0,0" VerticalAlignment="Top" Width="75" Style="{StaticResource btnStyle}" Height="20" Click="btnDelete_Click"/>
+        <Button Name="btnSelect" Content="查询" HorizontalAlignment="Left" Margin="746,382,0,0" VerticalAlignment="Top" Width="75" Style="{StaticResource btnStyle}" Height="20" Click="btnSelect_Click"/>
+        <Label x:Name="label1" Content="员工姓名：" HorizontalAlignment="Left" Margin="333,94,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="员工编号：" HorizontalAlignment="Left" Margin="333,130,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label3" Content="身份证号：" HorizontalAlignment="Left" Margin="333,166,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label4" Content="电       话：" HorizontalAlignment="Left" Margin="333,201,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label5" Content="职       位：" HorizontalAlignment="Left" Margin="333,235,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.51,-0.114"/>
+        <Label x:Name="label6" Content="账        号：" HorizontalAlignment="Left" Margin="680,269,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label7" Content="出生日期：" HorizontalAlignment="Left" Margin="680,94,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label8" Content="入职日期：" HorizontalAlignment="Left" Margin="680,130,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label9" Content="所属部门：" HorizontalAlignment="Left" Margin="680,166,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label10" Content="学       历：" HorizontalAlignment="Left" Margin="680,201,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label11" Content="政治面貌：" HorizontalAlignment="Left" Margin="680,235,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label12" Content="银行账户：" HorizontalAlignment="Left" Margin="333,269,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label13" Content="婚姻状况：" HorizontalAlignment="Left" Margin="333,304,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label17" Content="密       码：" HorizontalAlignment="Left" Margin="680,304,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_Sno" HorizontalAlignment="Left" Margin="433,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="textBox_ID" HorizontalAlignment="Left" Margin="433,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="textBox_Tele" HorizontalAlignment="Left" Margin="433,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="textBox_State" HorizontalAlignment="Left" Margin="433,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="textBox_Name" HorizontalAlignment="Left" Height="19" Margin="433,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="textBox_Acount" HorizontalAlignment="Left" Margin="433,275,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <ComboBox x:Name="combo_dept" HorizontalAlignment="Left" Height="19" Margin="774,172,0,0" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="textBox_User" HorizontalAlignment="Left" Margin="774,275,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="textBox_Password" HorizontalAlignment="Left" Height="19" Margin="774,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <DatePicker Name="datePicker_birth" HorizontalAlignment="Left" Margin="774,98,0,0" VerticalAlignment="Top" Width="112"/>
+        <DatePicker Name="datePicker_hiredate" HorizontalAlignment="Left" Margin="774,131,0,0" VerticalAlignment="Top" Width="112"/>
+        <ComboBox Name="combo_edu" HorizontalAlignment="Left" Margin="774,204,0,0" VerticalAlignment="Top" Width="112">
+        </ComboBox>
+        <ComboBox Name="combo_pro" HorizontalAlignment="Left" Margin="774,237,0,0" VerticalAlignment="Top" Width="112"/>
+        <ComboBox Name="combo_marry" HorizontalAlignment="Left" VerticalAlignment="Top" Width="112" Margin="433,308,0,0"/>
+        <Button Name="btnSelectImg" Content="选择" HorizontalAlignment="Left" Margin="146,330,0,0" VerticalAlignment="Top" Width="60" Height="20" Background="{x:Null}"
+                Click="btnSelectImg_Click" Style="{StaticResource btnStyle}"/>
+
+    </Grid>
+</Page>

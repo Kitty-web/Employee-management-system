@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DataTemplate x:Key="FreeDayStartDateTemplate">
+        <TextBlock Text="{Binding 起始日期,StringFormat={}{0:yyyy-MM-dd}}"/>
+    </DataTemplate>
+    <DataTemplate x:Key="FreeDayEndDateTemplate">
+        <TextBlock Text="{Binding 终止日期,StringFormat={}{0:yyyy-MM-dd}}"/>
+    </DataTemplate>
+</ResourceDictionary>
